@@ -19,4 +19,12 @@ class StrictOpenStruct
   def ==(other)
     @open_struct == other.instance_variable_get("@open_struct")
   end
+
+  def try(method)
+    begin
+      self.send(method)
+    rescue NoMethodError
+      nil
+    end
+  end
 end

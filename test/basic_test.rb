@@ -46,5 +46,15 @@ describe StrictOpenStruct do
     end
   end
 
+  describe "#try" do
+    specify "returns correct result if method exists" do
+      assert_equal StrictOpenStruct.new(a: 'a').try(:a), 'a'
+    end
+
+    specify "returns nil if method doesn't exist" do
+      assert_equal StrictOpenStruct.new(a: 'a').try(:b), nil
+    end
+  end
+
 end
 
